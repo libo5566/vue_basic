@@ -29,13 +29,12 @@
             },
             methods: {
                 parseDollar(){
-                    console.log('afksafasf');
-                return this.price*30//計算總數
-                },
+                    return this.total/30//計算總數
+                },//錯誤寫法 - >以後用computed代替
 
                 parse(){
-                    console.log('afksafasf');
-                    return this.res * this.price//計算總數
+                    this.total = this.res * this.price//計算總數
+                    return this.total//計算總數
                 },
                 add(){
                     // this.res = this.res+1

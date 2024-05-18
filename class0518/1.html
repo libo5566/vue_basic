@@ -6,6 +6,36 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="app" class="">
+        <p>hello {{name}},會用{{skill["f2e"][0]}}</p>
+        <p>{{live?"活著":"死了"}}</p>
+        <p v-text="music[2]"></p>
+        <h6 v-text="`${age}歲`"></h6>
+        <h6 v-html="content"></h6>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        //debugger
+        //console.log('vue')
+        const app = Vue.createApp({
+            data() {
+                return {
+                    name:'ingrid',
+                    age:37,
+                    content:`<div style="color:red";>content</div>`,
+                    live:true,
+                    music:['rock','pop','rap'],
+                    skill:{
+                        f2e:['vue','react','angular'],
+                        b2e:['php','node.js','php'],
+                    }
+
+                }
+            },
+        })
+        app.mount('#app')
+        //app
+    </script>
 </body>
 </html>

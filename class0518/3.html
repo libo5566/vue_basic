@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="reduce">-1</button>
+        {{res}}
+        <button @click="add">+1</button>
+        <br>
+        總價:{{parse()}}
+        美金:{{parseDollar()}}
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    res:0,
+                    count:1,//上方管數值
+                    total:10,
+                    price:100,
+                    dollar:0
+                }
+            },
+            methods: {
+                parseDollar(){
+                    console.log('afksafasf');
+                return this.price*30//計算總數
+                },
+
+                parse(){
+                    console.log('afksafasf');
+                    return this.res * this.price//計算總數
+                },
+                add(){
+                    // this.res = this.res+1
+                    if(this.res >= 10)return
+                    this.res += this.count//下方管邏輯
+                },
+                reduce(){
+                    // this.res = this.res-1
+                    if(this.res == 0)return
+                    this.res -= this.count
+                }
+            },
+        }).mount('#app')
+    </script>
+    
+</body>
+</html>

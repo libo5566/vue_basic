@@ -11,8 +11,9 @@
         {{res}}
         <button @click="add">+1</button>
         <br>
-        總價:{{parse()}}
-        美金:{{parseDollar()}}
+        總價:{{parse}}
+        <!-- 美金:{{parseDollar()}} -->
+        美金:{{dollar}} <!-- 這裡用computed代替parseDollar，並且parse 跟 dollar 都不是function,不能用(， -->
     </div>
 
     <script src="https://unpkg.com/vue"></script>
@@ -24,18 +25,27 @@
                     count:1,//上方管數值
                     total:10,
                     price:100,
-                    dollar:0
                 }
             },
-            methods: {
-                parseDollar(){
-                    return this.total/30//計算總數
-                },//錯誤寫法 - >以後用computed代替
-
+            computed:{
                 parse(){
-                    this.total = this.res * this.price//計算總數
-                    return this.total//計算總數
+                    return this.price * this.res//計算總數
                 },
+                dollar(){
+                    return this.parse/30//計算
+                },
+
+            },
+            methods: {
+                //可以把這塊寫註解掉，因為parseDollar已經用computed代替
+                // parseDollar(){
+                //     return this.total/30//計算總數
+                // },//錯誤寫法 - >以後用computed代替
+
+                // parse(){
+                //     this.total = this.res * this.price//計算總數
+                //     return this.total//計算總數
+                // },
                 add(){
                     // this.res = this.res+1
                     if(this.res >= 10)return

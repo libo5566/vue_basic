@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 上架的動作 -->
+
+        <div v-for="prodItem in products" :key="prodItem.id">
+            <!-- <img :src="prodItem.image" alt="">
+            <h6>{{prodItem['title']}}</h6> -->
+            <!-- <p>{{prodItem?.rating}}</p> -->
+            <p>
+                <!-- {{prodItem?.rating?.rate}}
+                {{prodItem?.rating?.count}}
+                {{parseInt(prodItem?.rating?.rate)}} -->
+                <span v-for="star in parseInt (prodItem?.rating?.rate)">*</span>
+                ({{prodItem?.rating?.count}})
+            </p>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    products: []
+                }
+            },
+            mounted() {
+                //畫面渲染完，開始執行作用域的東西
+                //叫貨車來
+                fetch('https://fakestoreapi.com/products')
+                    .then(res => {
+                        //貨車到了
+                        return res.json()
+                    })
+                    .then(json => {
+                        //貨車卸貨
+                        console.log(json)
+                        //放到倉庫裡
+                        this.products = json
+                    })
+                // console.log(this.test)//this就是vue的實體，可以把mounted渲染出去
+                // console.log(this.test2()) //這裡是vue的html元素
+            },
+        }).mount('#app')
+    </script>
+
+</body>
+
+</html>

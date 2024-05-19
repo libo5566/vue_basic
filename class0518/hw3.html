@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Box</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+        }
+        .red { background-color: #FF0000; }
+        .orange { background-color: #FFA500; }
+        .yellow { background-color: #FFFF00; }
+        .green { background-color: #008000; }
+        .blue { background-color: #0000FF; }
+        .indigo { background-color: #4B0082; }
+        .violet { background-color: #EE82EE; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="changeColor">随机换色</button>
+        <div class="box" :class="currentColor"></div>
+    </div>
+    
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    colors: ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+                    currentColor: 'red'
+                }
+            },
+            methods: {
+                changeColor() {
+                    const randomIndex = Math.floor(Math.random() * this.colors.length);
+                    this.currentColor = this.colors[randomIndex];
+                }
+            },
+        }).mount('#app');
+    </script>
+</body>
+</html>

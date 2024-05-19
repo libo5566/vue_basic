@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            padding:0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="addW()">加大圖片</button>
+        <!-- <img src="/image/氣球皮卡丘.gif" alt=""> -->
+        <!-- <img :src="imgUrl" style="width: 6rem;" alt=""> -->
+        <img :src="imgUrl" :style="{
+            width: `${widths}rem`,
+            backgroundColor: bg,
+            padding: '0.5rem'
+        }" alt="">
+        
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    imgUrl: "/image/氣球皮卡丘.gif",
+                    bg:'#999',//string
+                    widths:0,//Number
+                }
+            },
+            methods: {
+                addW(){
+                    if(this.widths === 10) return
+                    this.widths+= 1;//每次按下去加大圖片
+                    this.bg=`#${this.widths}${this.widths}${this.widths}`//每次按下去改變顏色
+                }
+            },
+        }).mount('#app')
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        function add(num1,num2){
+            console.log(num1*num2)
+            return num1+num2
+        }
+        // let res = add(1000,5)//數值後續可再變動
+        const res =add(1000,5)//數值後續不可再變動
+
+        const addRes =(num1,num2) =>{
+            return parseInt(num1)+parseInt(num2)
+            //console.log("不會出現")
+        }
+        console.log(res)
+        console.log(addRes(200,3))
+
+        //我是???
+
+        function iam(name,bloodType){
+            console .log(`My name is ${name} and my blood type is ${bloodType}`)
+        }
+        console.log(iam("Libo","B"))
+
+        const callName = (name,blood) =>{
+            return `My name is ${name}，血型${blood}`
+        }
+        console.log(callName('Libo','0'))
+
+        const callName2 = (name,blood) =>`My name is ${name}，血型${blood}`
+
+    </script>
+    
+</body>
+</html>
